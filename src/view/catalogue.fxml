@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CatalogueController" 
+      spacing="10" prefWidth="500">
+
+	<stylesheets>
+		<URL value="@computerbuilder.css" />
+	</stylesheets>
+
+        <TableView items="${controller.catalogue.currentView}" fx:id="partsTv">
+            <placeholder>
+                <Label text="No results found."/>
+            </placeholder> 
+            <columns>
+                <TableColumn text="Type" fx:id="typeClm"></TableColumn>
+                <TableColumn text="Name" fx:id="nameClm"></TableColumn>
+                <TableColumn text="Price" fx:id="priceClm"></TableColumn>
+            </columns>
+        </TableView>
+        
+        <Label text="Filters" styleClass="h2"/>
+        <GridPane vgap="10" hgap="10">
+            <Label text="Type:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField text="" GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="typeTf"/>
+            <Label text="Price Range:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <TextField text="" fx:id="minTf"/>
+                <Label text="to"/>
+                <TextField text="" fx:id="maxTf"/>
+            </HBox>
+        </GridPane>
+
+        <Button text="Add Selected to Build" onAction="#handleAddSelected" disable="true" fx:id="addToBuildBtn"/>
+        <Button text="Add New Part to Catalogue" onAction="#handleViewNewPart"/>
+        <Button text="Remove Selected from Catalogue" onAction="#handleRemovePart" disable="true" fx:id="removeBtn"/>
+        <Button text="Close" onAction="#handleQuit"/>
+
+</VBox>
+
